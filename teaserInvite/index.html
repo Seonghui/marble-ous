@@ -1,0 +1,181 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta property="og:image:width" content="183" />
+    <meta property="og:image:height" content="28" />
+    <title>marble-ous_invitation</title>
+    <link rel="stylesheet" href="css/clear.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>   
+</head>
+<body>
+    <header>
+        <div id="header_inner">
+            <img src="img/logo.png" alt="">
+<!--            <img id="infoBtn"  src="img/infoBtn.png" alt="">-->
+            <i id="infoBtn" class="fa fa-envelope-o" aria-hidden="true" style="font-size:1.5em"></i>
+        </div>
+    </header>
+    <div id="infoHeader">
+        <div id="infoHeader_inner">
+        <i id="closeBtn" class="fa fa-envelope-open-o" aria-hidden="true" style="font-size:1.5em"></i>
+        </div>
+    </div>
+     <div id="videpwrapper" class="onlyPc">
+        <video autoplay loop>
+            <source src="img/teaser.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div id="gifwrapper" class="onlyMobile" >
+        <img src="img/teaserGif.gif" alt="">
+    </div>
+    <div id="onlyPhone_gifwrapper" class="onlyPhone" >
+        <img src="img/teaserGif.gif" alt="">
+    </div>
+    <div id="info">
+        <div id="content" class="clearfix">
+            <div class="stagger">
+                <img id="teaserLogo" src="img/teaserLogo.png" alt="teaserlogo">
+                <h1>홍익대학교 디지털미디어디자인전공 2016 졸업전시회에 초대합니다.</h1>
+            </div>
+            <div class="stagger">
+                <h2>2016.11.04 FRI - 2016.11.08 TUE</h2>
+                <h3>11.04 PM6:30 - PM9:00 / 11.05 - 11.08 AM10:00 - PM6:00 </h3>
+                <div class="op">
+                    <div class=opRight>
+                        <p style="font-weight: 600;">Opening reception</p>
+                        <p>11.04 PM6:30</p>
+                    </div>
+                    <div class=opleft>
+                        <p style="font-weight: 600;">Opening performance </p>
+                        <p>11.04  PM7:30</p>
+                    </div>
+                </div>
+                <p>경기도 성남시 분당구 양현로 322 코리아디자인센터<br>지하 1층 전시실 (야탑역 4번 출구 도보5분)</p>
+                <a  href="http://map.naver.com/?pinId=37357471&perimeter=1&pinType=site&lng=71d28a951fbac7da7b8e4636dbc74568&dlevel=11&lat=8381ed60ed97d64202f6a452cfb3b616&enc=b64"
+     target="_blank"><div class="mapBtn"><p><i class="fa fa-map-marker" aria-hidden="true"></i> 네이버지도에서 보기</p></div></a>
+           </div>
+            <img class="stagger" id="map" src="img/map.png" alt="map">
+        </div><!--content-->
+    </div>
+    <div id="mobile_content" class="clearfix">
+            <div class="stagger">
+                <h1>홍익대학교 <br>디지털미디어디자인전공 2016 <br>졸업전시회에 초대합니다.</h1>
+            </div>
+            <div class="stagger">
+                <h2>2016.11.04 FRI - 2016.11.08 TUE</h2>
+                <h3>11.04 PM6:30 - PM9:00<br>11.05 - 11.08 AM10:00 - PM6:00 </h3>
+                <div class="op">
+                    <div class=opRight>
+                        <p style="font-weight: 600;">Opening reception</p>
+                        <p>11.04 PM6:30</p>
+                    </div>
+                    <div class=opleft>
+                        <p style="font-weight: 600;">Opening performance </p>
+                        <p>11.04  PM7:30</p>
+                    </div>
+                </div>
+                <p>경기도 성남시 분당구 양현로 322 코리아디자인센터<br>지하 1층 전시실 (야탑역 4번 출구 도보5분)</p>
+                <a  href="http://map.naver.com/?pinId=37357471&perimeter=1&pinType=site&lng=71d28a951fbac7da7b8e4636dbc74568&dlevel=11&lat=8381ed60ed97d64202f6a452cfb3b616&enc=b64"
+     target="_blank"><div class="mapBtn"><p><i class="fa fa-map-marker" aria-hidden="true"></i> 네이버지도에서 보기</p></div></a>
+           </div>
+        </div><!--content-->
+        <footer>
+            <div id="inner_footer"><p class="ftleft">2016 HONGIK UNIV. DEGITAL MEDIA DESIGN GRADUATION EXIHBITON </p> <p class="ftright">2016.11.04 FRI - 2016.11.08 TUE</p></div>
+        </footer>
+</body>
+<script>    
+$( "#infoBtn" ).click(function() {
+    TweenMax.to("#info",1,{ease: Power4.easeOut,top:0});
+    TweenMax.to("#info",0.5,{opacity:0.85});
+    TweenMax.to("#gifwrapper",0.2,{marginTop:'-5%'});
+    TweenMax.staggerFrom(".stagger", 0.7, {y:-560,opacity:0, delay:0.2}, 0.2);
+    $("header").css('display','none');
+    $("#infoHeader").css('display','table');
+    $("footer").css('display','none');
+    $('#info').css({
+		height : $(window).height()
+	}); 
+    $('#content').css({
+		position:'absolute',
+		left: ($(window).width() - $('#content').outerWidth())/2,
+		top: ($(window).height() - $('#content').outerHeight())/2
+	}); 
+    
+});
+$( "#closeBtn" ).click(function() {
+    TweenMax.to("#info",1,{ease: Power2.easeOut,top:-($(window).height())});
+    TweenMax.to("#info",1,{opacity:0});
+    TweenMax.to("#gifwrapper",0.2,{marginTop:'0'});
+    $("header").css('display','table');
+    $("#infoHeader").css('display','none');
+    $("footer").css('display','table');
+}); 
+</script>
+
+<script>
+$(window).resize(function(){
+	$('#videpwrapper').css({
+		position:'absolute',
+		left: ($(window).width() - $('#videpwrapper').outerWidth())/2,
+		top: ($(window).height() - $('#videpwrapper').outerHeight())/2
+	});
+    $('#gifwrapper').css({
+		position:'absolute',
+		left: ($(window).width() - $('#gifwrapper').outerWidth())/2,
+		top: ($(window).height() - $('#gifwrapper').outerHeight())/2
+	}); 
+    $('#content').css({
+		position:'absolute',
+		left: ($(window).width() - $('#content').outerWidth())/2,
+		top: ($(window).height() - $('#content').outerHeight())/2
+	}); 
+    $('#info').css({
+		height : $(window).height()
+	}); 
+    $('#content h1').css({
+		marginBottom: ($(window).height())/3
+	}); 
+});
+$(document).ready(function(){
+    // To initially run the function:
+    $(window).resize();
+});  
+</script>
+
+<script>
+jQuery(document).ready(function() {
+    // Attach event handler 
+    $('video').on('click', function(event) {
+    event.preventDefault();
+    $('video')[0].play();
+    });
+    // Trigger click event
+    $('video').trigger('click');
+});
+</script>
+<script>
+window.onload = function() {
+    $('#videpwrapper').css({
+		position:'absolute',
+		left: ($(window).width() - $('#videpwrapper').outerWidth())/2,
+		top: ($(window).height() - $('#videpwrapper').outerHeight())/2
+	});
+    $('#gifwrapper').css({
+		position:'absolute',
+		left: ($(window).width() - $('#gifwrapper').outerWidth())/2,
+		top: ($(window).height() - $('#gifwrapper').outerHeight())/2
+	}); 
+    TweenMax.fromTo("#infoBtn", 0.3, {marginTop:'0'}, {marginTop:'-8px', repeat:-1, yoyo:true});
+    $("#infoBtn").hover(function(){
+        TweenMax.set("#infoBtn", {marginTop:'0'});
+        }, function() {
+        TweenMax.fromTo("#infoBtn", 0.3, {marginTop:'0'}, {marginTop:'-8px', repeat:-1, yoyo:true});
+	});
+};
+</script>
+</html>

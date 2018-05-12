@@ -1,0 +1,538 @@
+/* PARALLAX SCROLLING EXPERIMENT
+   Master Styles
+   Author: Jonathan Nicol (f6design.com)
+*****************************************************************/
+
+
+/* Global reset
+   http://meyerweb.com/eric/tools/css/reset/ 
+*****************************************************************/
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+::selection
+{
+color:#fc3;
+background-color:#fff;
+}
+::-moz-selection
+{
+color:#fc3;
+background-color:#fff;
+} 
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	font-size:12px;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Extended base styles (site specific)
+*****************************************************************/
+
+html { 
+	overflow-y: scroll; /* always force a scrollbar in non-IE */
+	}
+body {
+	
+	background-image:url(../img/pat.jpg);
+	background-repeat:repeat;
+	overflow-x: hidden;
+	/*height: 4550px;*/
+	height:7900px;
+	line-height: 1.5;
+	color: #333;
+	font-size: 14px;
+
+	font-family: 'Nanum Gothic', sans-serif;
+	letter-spacing:-0.08em;
+	word-spacing:2px;
+	font-weight:400;
+	
+}
+h1 {
+	color: #333;
+}
+a, a:link,
+a:active,
+a:visited {
+	-webkit-transition: color 0.25s ease-out;
+	-moz-transition: color 0.25s ease-out;
+	-o-transition: color 0.25s ease-out;
+	transition: color 0.25s ease-out;
+	color:#fff;
+	outline: none;
+	text-decoration:none;
+	}
+	a:hover { 
+		color:#666;
+		}
+img { 
+	display:block;
+	}
+p {
+	margin:0 0 1em 0;
+	}
+
+/* Common shared styles
+*****************************************************************/
+
+hr {
+	margin: 0;
+	border: none;
+	border-top: 1px solid #3b3b3b;
+	border-bottom: 1px solid #3b3b3b;
+	height: 3px;
+}
+
+/* Page structure
+*****************************************************************/
+
+#wrapper {
+	position: relative;
+}
+#branding {
+	width: 100%;
+	background: #444;
+	box-shadow:0 0 6px #222;
+	 position: fixed;
+    width: 100%;
+    z-index: 500;
+	padding:30px 0 0px 50px;
+	margin: 0 auto;
+	border-bottom: solid 3px #FC3;
+	}
+	#branding h1 {
+		width: 940px;
+		font-size: 2em;
+		font-weight: 600;
+		color:#fc3;
+		}
+	#branding h2 {
+			color:#707070;
+			line-height:0.2em; 
+			
+		}
+
+/* Nav
+*****************************************************************/
+
+nav#primary {
+	z-index: 5;
+	position: fixed;
+	top: 50%;
+	right: 16px;
+	margin-top: -40px;
+}
+nav#primary li {
+	position: relative;
+	height: 30px;
+	
+}
+nav#primary a {
+	display: block;
+	width: 32px;
+	height: 32px;
+	text-indent: -9999px;
+	background: transparent url('../img/nav-dot.png') 4px 4px no-repeat;
+}
+nav#primary a:hover, nav#primary a.active {
+	background: transparent url('../img/nav-dot.png') 4px -46px no-repeat;
+	
+}
+nav#primary h1 {
+	position: absolute;
+	right: 32px;
+	top: 2px;;
+	display: none;
+	padding: 4px 20px 4px 7px;;
+	color: #333;
+	white-space: nowrap;
+	background: transparent url('../img/nav-arrow.png') 100% 50% no-repeat;
+	font-weight:600;
+	font-family: 'Source Sans Pro', sans-serif;
+	
+	}
+nav.next-prev {
+	margin: 176px -70px;
+	position:absolute;
+	top:0;
+	left:0;
+	}
+	#article04 .next-prev {
+		margin-top:317px;
+	}
+	#article01 .next-prev {
+		margin-top:136px;
+	}
+	#article02 .next-prev {
+		text-align:left;
+	}
+	
+	a.prev,
+	a.next {
+		display: block;
+		width: 30px;
+		height: 25px;
+		text-indent: -9999px;
+		}
+	a.prev {
+		margin: 0 auto 5px auto;
+		background: transparent url('../img/scroll-arrow-up_.png') 0 0 no-repeat;
+		}
+		a.prev:hover {
+			background: transparent url('../img/scroll-arrow-up_.png') 0 -50px no-repeat;
+			}
+	a.next {
+		margin: 5px auto 0 auto;
+		background: transparent url('../img/scroll-arrow-down_.png') -1px 0 no-repeat;
+		}
+		a.next:hover {
+			background: transparent url('../img/scroll-arrow-down_.png') -1px -50px no-repeat;
+			}
+
+/* Parallax
+*****************************************************************/
+
+/* content */
+span1 {
+			font-weight: 600;
+}
+span2 {
+	font-style:italic;
+	font-size:1em;
+	font-weight:bold;
+	line-height:3em;
+	text-align:right;
+}
+
+#content {
+	z-index: 4;
+	position: relative;
+	max-width: 940px;
+	padding: 0 10px;
+	margin: 0 auto;
+	line-height: 1.7;
+	}
+	#content h1 {
+		margin-bottom:1em;
+	}
+	#content article {
+		width: 820px;
+		height:1027px;
+		overflow:visible;
+		}
+		#article01 ,
+		#article02,
+		#article03,
+		#article04 {
+			padding-top: 105px;
+			
+			}
+		#article01 h2 {
+			top:-3em;
+		}
+		#article01 {
+			position: absolute;
+			top: 50px;
+			background:url(../img/01.png) no-repeat;
+			}
+		#article01 header {
+			left:5em;
+			top:16em;
+			position:inherit;
+		}
+		#article01 p{
+			left:5em;
+			top:23.5em;
+			position:relative;
+			width:25em;
+		}
+		#article02 {
+			position: absolute;
+			top: 1600px;
+			background:url(../img/02.png) no-repeat;
+			text-align:right;
+			}
+			#article02 header {
+			right:4em;
+			top:19em;
+			position:inherit;
+			}
+			#article02 p{
+				
+				top:26.6em;
+				position:relative;
+				left:-4em;
+				float:right;
+			}
+			#article02 h1 { line-height:0.8em;}
+		#article03 {
+			position: absolute;
+			top: 3500px;
+			background:url(../img/03.png) no-repeat;
+			height:1571px !important;
+			}
+			#article03 header {
+				text-align:right;
+				top:63em;
+				position:inherit;
+				right:6em;
+				
+			}
+			#article03 header h2 {
+				font-weight:600;
+				font-family: 'Source Sans Pro', sans-serif;
+				font-size:2.5em;
+				line-height:none;
+				word-spacing:normal;
+				letter-spacing:normal;
+			}
+			#article03 p {
+				position:relative;
+				left:4em;
+				top:30.5em;
+
+		
+			}
+			#article03 header p {
+				
+				top:1em;
+				position:relative;
+				left:0;
+				float:right;
+				font-family: 'Source Sans Pro', sans-serif;		
+				line-height:1em;
+				word-spacing:normal;
+				letter-spacing:normal;
+				
+		
+			}
+			#article03 header:first-child {
+				top:22em;
+				position:inherit;
+				text-align:left;
+				left:4em;
+				right:0;
+				
+			}
+			#article03 header:first-child h2{
+				font-size:2.2em;
+				font-weight:600;
+				letter-spacing:-0.1em;
+				word-spacing:2px;
+				line-height:1.2em;
+				
+				/*font-family: 'Source Sans Pro', sans-serif;*/
+				font-family: 'Nanum Gothic', sans-serif;
+				font-weight:800;
+			}
+			
+			#article03 img {
+				left:-0.5em;
+				top:0em;
+				position:relative;
+			}
+			
+			#content h1 {
+				margin: 0 0 25px 0;
+				font-size: 6em;
+				font-family: 'Source Sans Pro', sans-serif;
+				/*font-family: 'Droid Sans', sans-serif;*/
+				/*font-family: 'Aldrich', sans-serif;*/
+				font-weight: normal;
+				line-height: 0.7em;
+				font-weight:300;
+				letter-spacing:-2px;
+				word-spacing:3px;
+				/*text-shadow: 2px 2px #fc3;*/
+				}
+			#content h2 {
+				font-size:2em;
+				font-weight:600;
+				letter-spacing:-0.1em;
+				word-spacing:2px;
+				line-height:1.2em;
+				
+				/*font-family: 'Source Sans Pro', sans-serif;*/
+				font-family: 'Nanum Gothic', sans-serif;
+				font-weight:800;
+			}
+			
+			
+		#article04 {
+			position: absolute;
+			top: 6790px;
+			background:url(../img/teaser_logo.png) no-repeat;
+			left:300px;
+			height:740px !important;
+			
+			}
+		#article04 header {
+			top:52em;
+			left:34em;
+			position:inherit;
+			color:#FFF;
+			
+		}
+		#article04 h1 {color:#fc3;}
+		#article04 p {
+			
+			 color:#eee;
+			font-family: 'Source Sans Pro',sans-serif;
+			font-size: 2.2em;
+			font-weight: 600;
+			left: 2.8em;
+			line-height: 1.2em;
+			position: relative;
+			top: 26em;
+			
+		}
+		#article04 a {
+			color:#222;
+			text-shadow:0px 1px 1px #666;
+			background: transparent url('../img/nav-dot.png') 0px 6px no-repeat;
+			padding:0 0 0 35px;
+			
+		}
+		#article04 a:hover {
+			color:#fc3;
+			text-shadow:0px 2px 2px #111;
+			background: transparent url('../img/nav-dot.png') 0px -42px no-repeat;
+			
+		}
+		
+/* foreground (ballons/landscape) */
+#parallax-bg3 {
+	z-index: 3;
+	position: fixed;
+	left: 50%; /* align left edge with center of viewport */
+	top: 0;
+	width: 940px;
+	margin-left: -470px; /* move left by half element's width */
+	}
+	/* balloon */
+	#bg3-1 {
+		position: absolute;
+		top: 1190px;
+		left: 15px;
+		}
+	#bg3-2 {
+		position: absolute;
+		top: 3780px;
+		left: 549px;
+		-webkit-transform: rotate(180deg);
+		-moz-transform: rotate(180deg);
+		
+		}
+	#bg3-3 {
+		position: absolute;
+		top: 8645px;
+		left: 520px;
+		}
+	#bg3-4 {
+		position: absolute;
+		top: 8400px;
+		left: -85px;
+		}
+/* midground (clouds) */
+#parallax-bg2 {
+	z-index: 2;
+	position: fixed;
+	left: 50%; /* align left edge with center of viewport */
+	top: 0;
+	width: 1200px;
+	margin-left: -600px; /* move left by half element's width */
+	}
+	#bg2-1 {
+		position: absolute;
+		top: 800px;
+		left: 60px;
+		}
+	#bg2-2 {
+		position: absolute;
+		top: 2024px;
+		left: 621px;
+		
+		}
+	#bg2-3 {
+		position: absolute;
+		top: 4160px;
+		left:467px;
+		}
+	#bg2-4 {
+		position: absolute;
+		top: 2360px;
+		left: 800px;
+		}
+	#bg2-5 {
+		position: absolute;
+		top: 1800px;
+		left: 890px;
+		}
+/* background (clouds) */
+#parallax-bg1 {
+	z-index: 1;
+	position: fixed;
+	left: 50%; /* align left edge with center of viewport */
+	top: 0;
+	width: 1200px;
+	margin-left: -600px; /* move left by half element's width */
+	}
+	#bg1-1 {
+		position: absolute;
+		top: 170px;
+		left: -270px;
+		}
+	#bg1-2 {
+		position: absolute;
+		top: 880px;
+		left: 795px;
+		}
+	#bg1-3 {
+		position: absolute;
+		top: 2550px;
+		left: 513px;
+		}
+	#bg1-4 {
+		position: absolute;
+		top: 7020px;
+		left: 450px;
+		}
+
